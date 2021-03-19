@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Beanie</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Doc";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Beanie</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Doc</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pip">PIP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#poetry">Poetry</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#init">Init</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create">Create</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#create-a-document-insert-it">Create a document (insert it)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#insert-one-document">Insert one document</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#insert-many-documents">Insert many documents</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#find">Find</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get-the-document">Get the document</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#find-one-document">Find one document</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#find-many-documents">Find many documents</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#find-all-the-documents">Find all the documents</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#update">Update</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#replace-the-document-full-update">Replace the document (full update)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#replace-one-document">Replace one document</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#update-the-document-partial-update">Update the document (partial update)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#update-one-document">Update one document</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#update-many-documents">Update many documents</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#update-all-the-documents">Update all the documents</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delete">Delete</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-the-document">Delete the document</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-one-documents">Delete one documents</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-many-documents">Delete many documents</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#delete-all-the-documents">Delete all the documents</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aggregate">Aggregate</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#collection-setup">Collection setup</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#collection-name">Collection name</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#indexes">Indexes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#use-motor-collection">Use Motor Collection</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Beanie</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Doc</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1"></h1>
+<p><img alt="Beanie" src="https://raw.githubusercontent.com/roman-right/beanie/main/assets/logo/with_text.svg" /></p>
+<p>Beanie - is an asynchronous ODM for MongoDB, based on <a href="https://motor.readthedocs.io/en/stable/">Motor</a>
+and <a href="https://pydantic-docs.helpmanual.io/">Pydantic</a>.</p>
+<p>It uses an abstraction over Pydantic models and Motor collections to work with the database. Class Document allows to
+create, replace, update, get, find and aggregate.</p>
+<p>Here you can see, how to use Beanie, in simple examples:</p>
+<h2 id="installation">Installation</h2>
+<h3 id="pip">PIP</h3>
+<pre><code class="language-shell">pip install beanie
+</code></pre>
+<h3 id="poetry">Poetry</h3>
+<pre><code class="language-shell">poetry add beanie
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="init">Init</h3>
+<pre><code class="language-python">import asyncio
+from typing import List
+
+import motor
+from beanie import Document
+from beanie import init_beanie
+from pydantic import BaseModel
+
+
+# CREATE BEANIE DOCUMENT STRUCTURE
+
+class SubDocument(BaseModel):
+    test_str: str
+
+
+class DocumentTestModel(Document):
+    test_int: int
+    test_list: List[SubDocument]
+    test_str: str
+
+
+async def main():
+    # CREATE MOTOR CLIENT AND DB
+
+    client = motor.motor_asyncio.AsyncIOMotorClient(
+        &quot;mongodb://user:pass@host:27017/db&quot;,
+        serverSelectionTimeoutMS=100
+    )
+    db = client.beanie_db
+
+    # INIT BEANIE
+
+    await init_beanie(database=db, document_models=[DocumentTestModel])
+
+
+asyncio.run(main())
+</code></pre>
+<h3 id="create">Create</h3>
+<h4 id="create-a-document-insert-it">Create a document (insert it)</h4>
+<pre><code class="language-python">document = DocumentTestModel(
+    test_int=42,
+    test_list=[SubDocument(test_str=&quot;foo&quot;), SubDocument(test_str=&quot;bar&quot;)],
+    test_str=&quot;kipasa&quot;,
+)
+
+await document.create()
+</code></pre>
+<h4 id="insert-one-document">Insert one document</h4>
+<pre><code class="language-python">document = DocumentTestModel(
+    test_int=42,
+    test_list=[SubDocument(test_str=&quot;foo&quot;), SubDocument(test_str=&quot;bar&quot;)],
+    test_str=&quot;kipasa&quot;,
+)
+
+await DocumentTestModel.insert_one(document)
+</code></pre>
+<h4 id="insert-many-documents">Insert many documents</h4>
+<pre><code class="language-python">document_1 = DocumentTestModel(
+    test_int=42,
+    test_list=[SubDocument(test_str=&quot;foo&quot;), SubDocument(test_str=&quot;bar&quot;)],
+    test_str=&quot;kipasa&quot;,
+)
+document_2 = DocumentTestModel(
+    test_int=42,
+    test_list=[SubDocument(test_str=&quot;foo&quot;), SubDocument(test_str=&quot;bar&quot;)],
+    test_str=&quot;kipasa&quot;,
+)
+
+await DocumentTestModel.insert_many([document_1, document_2])
+</code></pre>
+<h3 id="find">Find</h3>
+<h4 id="get-the-document">Get the document</h4>
+<pre><code class="language-python">document = await DocumentTestModel.get(DOCUMENT_ID)
+</code></pre>
+<h4 id="find-one-document">Find one document</h4>
+<pre><code class="language-python">document = await DocumentTestModel.find_one({&quot;test_str&quot;: &quot;kipasa&quot;})
+</code></pre>
+<h4 id="find-many-documents">Find many documents</h4>
+<pre><code class="language-python">async for document in DocumentTestModel.find_many({&quot;test_str&quot;: &quot;uno&quot;}):
+    print(document)
+</code></pre>
+<p>OR</p>
+<pre><code class="language-python">documents = await DocumentTestModel.find_many({&quot;test_str&quot;: &quot;uno&quot;}).to_list()
+</code></pre>
+<h4 id="find-all-the-documents">Find all the documents</h4>
+<pre><code class="language-python">async for document in DocumentTestModel.find_all()
+    print(document)
+</code></pre>
+<p>OR</p>
+<pre><code class="language-python">documents = await DocumentTestModel.find_all().to_list()
+</code></pre>
+<h3 id="update">Update</h3>
+<h4 id="replace-the-document-full-update">Replace the document (full update)</h4>
+<pre><code class="language-python">document.test_str = &quot;REPLACED_VALUE&quot;
+await document.replace()
+</code></pre>
+<h4 id="replace-one-document">Replace one document</h4>
+<p>Replace one doc data by another</p>
+<pre><code class="language-python">new_doc = DocumentTestModel(
+    test_int=0,
+    test_str='REPLACED_VALUE',
+    test_list=[]
+)
+await DocumentTestModel.replace_one({&quot;_id&quot;: document.id}, new_doc)
+</code></pre>
+<h4 id="update-the-document-partial-update">Update the document (partial update)</h4>
+<p>in this example, I'll add an item to the document's "test_list" field</p>
+<pre><code class="language-python">to_insert = SubDocument(test_str=&quot;test&quot;)
+await document.update(update_query={&quot;$push&quot;: {&quot;test_list&quot;: to_insert.dict()}})
+</code></pre>
+<h4 id="update-one-document">Update one document</h4>
+<pre><code class="language-python">await DocumentTestModel.update_one(
+    update_query={&quot;$set&quot;: {&quot;test_list.$.test_str&quot;: &quot;foo_foo&quot;}},
+    filter_query={&quot;_id&quot;: document.id, &quot;test_list.test_str&quot;: &quot;foo&quot;},
+)
+</code></pre>
+<h4 id="update-many-documents">Update many documents</h4>
+<pre><code class="language-python">await DocumentTestModel.update_many(
+    update_query={&quot;$set&quot;: {&quot;test_str&quot;: &quot;bar&quot;}},
+    filter_query={&quot;test_str&quot;: &quot;foo&quot;},
+)
+</code></pre>
+<h4 id="update-all-the-documents">Update all the documents</h4>
+<pre><code class="language-python">await DocumentTestModel.update_all(
+    update_query={&quot;$set&quot;: {&quot;test_str&quot;: &quot;bar&quot;}}
+)
+</code></pre>
+<h3 id="delete">Delete</h3>
+<h4 id="delete-the-document">Delete the document</h4>
+<pre><code class="language-python">await document.delete()
+</code></pre>
+<h4 id="delete-one-documents">Delete one documents</h4>
+<pre><code class="language-python">await DocumentTestModel.delete_one({&quot;test_str&quot;: &quot;uno&quot;})
+</code></pre>
+<h4 id="delete-many-documents">Delete many documents</h4>
+<pre><code class="language-python">await DocumentTestModel.delete_many({&quot;test_str&quot;: &quot;dos&quot;})
+</code></pre>
+<h4 id="delete-all-the-documents">Delete all the documents</h4>
+<pre><code class="language-python">await DocumentTestModel.delete_all()
+</code></pre>
+<h3 id="aggregate">Aggregate</h3>
+<pre><code class="language-python">async for item in DocumentTestModel.aggregate(
+        [{&quot;$group&quot;: {&quot;_id&quot;: &quot;$test_str&quot;, &quot;total&quot;: {&quot;$sum&quot;: &quot;$test_int&quot;}}}]
+):
+    print(item)
+</code></pre>
+<p>OR</p>
+<pre><code class="language-python">class OutputItem(BaseModel):
+    id: str = Field(None, alias=&quot;_id&quot;)
+    total: int
+
+
+async for item in DocumentTestModel.aggregate(
+        [{&quot;$group&quot;: {&quot;_id&quot;: &quot;$test_str&quot;, &quot;total&quot;: {&quot;$sum&quot;: &quot;$test_int&quot;}}}],
+        item_model=OutputModel
+):
+    print(item)
+</code></pre>
+<p>OR</p>
+<pre><code class="language-python">results = await DocumentTestModel.aggregate(
+    [{&quot;$group&quot;: {&quot;_id&quot;: &quot;$test_str&quot;, &quot;total&quot;: {&quot;$sum&quot;: &quot;$test_int&quot;}}}],
+    item_model=OutputModel
+).to_list()
+</code></pre>
+<h3 id="collection-setup">Collection setup</h3>
+<p>Optionally collection of the document could be set up by the internal <code>Collection</code> class. Follow the examples:</p>
+<h4 id="collection-name">Collection name</h4>
+<p>The name of the collection could be set up by the field <code>name</code> of the Collection class. By default, the collection will
+have the same name as the document class.</p>
+<pre><code class="language-python">class DocumentTestModelWithCustomCollectionName(Document):
+    test_int: int
+    test_list: List[SubDocument]
+    test_str: str
+
+    class Collection:
+        name = &quot;custom_collection&quot;
+</code></pre>
+<h4 id="indexes">Indexes</h4>
+<p>The indexes could be set up by the <code>indexes</code> field. It is a list where items could be:</p>
+<ul>
+<li>single key. Name of the document's field</li>
+<li>list of (key, direction) pairs. Key - string, name of the document's field. Direction - pymongo direction (
+  example: <code>pymongo.ASCENDING</code>)</li>
+<li><code>pymongo.IndexModel</code> instance - the most flexible
+  option. <a href="https://pymongo.readthedocs.io/en/stable/api/pymongo/operations.html#pymongo.operations.IndexModel">Documentation</a></li>
+</ul>
+<pre><code class="language-python">class DocumentTestModelWithIndex(Document):
+    test_int: int
+    test_list: List[SubDocument]
+    test_str: str
+
+    class Collection:
+        indexes = [
+            &quot;test_int&quot;,
+            [
+                (&quot;test_int&quot;, pymongo.ASCENDING),
+                (&quot;test_str&quot;, pymongo.DESCENDING),
+            ],
+            IndexModel(
+                [(&quot;test_str&quot;, pymongo.DESCENDING)],
+                name=&quot;test_string_index_DESCENDING&quot;,
+            ),
+        ]
+</code></pre>
+<h3 id="use-motor-collection">Use Motor Collection</h3>
+<p>In case, when you need more low-level control, you can get access to the engine of the Beanie <code>Document</code></p>
+<ul>
+<li><a href="https://motor.readthedocs.io/en/stable/api-asyncio/asyncio_motor_collection.html">AsyncIO Motor Collection</a></li>
+</ul>
+<pre><code class="language-python">motor_collection = DocumentTestModel.get_motor_collection()
+await motor_collection.drop_index(&quot;index_name&quot;)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2021-03-19 13:31:55.848856+00:00
+-->
