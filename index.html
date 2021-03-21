@@ -259,19 +259,33 @@ await DocumentTestModel.insert_many([document_1, document_2])
 <pre><code class="language-python">document = await DocumentTestModel.find_one({&quot;test_str&quot;: &quot;kipasa&quot;})
 </code></pre>
 <h4 id="find-many-documents">Find many documents</h4>
-<pre><code class="language-python">async for document in DocumentTestModel.find_many({&quot;test_str&quot;: &quot;uno&quot;}):
+<pre><code class="language-python">async for document in DocumentTestModel.find_many({&quot;test_str&quot;: &quot;uno&quot;}, limit=100):
     print(document)
 </code></pre>
 <p>OR</p>
-<pre><code class="language-python">documents = await DocumentTestModel.find_many({&quot;test_str&quot;: &quot;uno&quot;}).to_list()
+<pre><code class="language-python">documents = await DocumentTestModel.find_many({&quot;test_str&quot;: &quot;uno&quot;}, 
+                                              sort=&quot;test_int&quot;).to_list()
 </code></pre>
+<p>Parameters:</p>
+<ul>
+<li>filter_query: The selection criteria</li>
+<li>skip: The number of documents to omit.</li>
+<li>limit: The maximum number of results to return.</li>
+<li>sort: A key or a list of (key, direction) pairs specifying the sort order for this query.</li>
+</ul>
 <h4 id="find-all-the-documents">Find all the documents</h4>
-<pre><code class="language-python">async for document in DocumentTestModel.find_all()
+<pre><code class="language-python">async for document in DocumentTestModel.find_all(limit=100):
     print(document)
 </code></pre>
 <p>OR</p>
-<pre><code class="language-python">documents = await DocumentTestModel.find_all().to_list()
+<pre><code class="language-python">documents = await DocumentTestModel.find_all(skip=10).to_list()
 </code></pre>
+<p>Parameters:</p>
+<ul>
+<li>skip: The number of documents to omit.</li>
+<li>limit: The maximum number of results to return.</li>
+<li>sort: A key or a list of (key, direction) pairs specifying the sort order for this query.</li>
+</ul>
 <h3 id="update">Update</h3>
 <h4 id="replace-the-document-full-update">Replace the document (full update)</h4>
 <pre><code class="language-python">document.test_str = &quot;REPLACED_VALUE&quot;
@@ -446,5 +460,5 @@ await motor_collection.drop_index(&quot;index_name&quot;)
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-03-19 20:06:31.134605+00:00
+Build Date UTC : 2021-03-21 20:16:18.365743+00:00
 -->
