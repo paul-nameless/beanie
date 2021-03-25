@@ -218,6 +218,14 @@ async def main():
 
 asyncio.run(main())
 </code></pre>
+<p><code>init_beanie</code> supports not only list of classes for the document_models parameter, but also strings with the dot separated paths. Example:</p>
+<pre><code class="language-python">await init_beanie(
+        database=db,
+        document_models=[
+            &quot;app.models.DemoDocument&quot;,
+        ],
+    )
+</code></pre>
 <h3 id="create">Create</h3>
 <h4 id="create-a-document-insert-it">Create a document (insert it)</h4>
 <pre><code class="language-python">document = DocumentTestModel(
@@ -457,5 +465,5 @@ await motor_collection.drop_index(&quot;index_name&quot;)
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-03-25 09:33:22.484117+00:00
+Build Date UTC : 2021-03-25 15:36:15.202602+00:00
 -->
