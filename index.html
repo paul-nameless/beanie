@@ -167,7 +167,7 @@
               
                 <h1 id="_1"></h1>
 <p><img alt="Beanie" src="https://raw.githubusercontent.com/roman-right/beanie/main/assets/logo/with_text.svg" /></p>
-<p>Beanie - is an asynchronous ODM for MongoDB, based on <a href="https://motor.readthedocs.io/en/stable/">Motor</a>
+<p><a href="https://github.com/roman-right/beanie">Beanie</a> - is an asynchronous ODM for MongoDB, based on <a href="https://motor.readthedocs.io/en/stable/">Motor</a>
 and <a href="https://pydantic-docs.helpmanual.io/">Pydantic</a>.</p>
 <p>It uses an abstraction over Pydantic models and Motor collections to work with the database. Class Document allows to
 create, replace, update, get, find and aggregate.</p>
@@ -400,10 +400,7 @@ have the same name as the document class.</p>
         ]
 </code></pre>
 <h3 id="use-motor-collection">Use Motor Collection</h3>
-<p>In case, when you need more low-level control, you can get access to the engine of the Beanie <code>Document</code></p>
-<ul>
-<li><a href="https://motor.readthedocs.io/en/stable/api-asyncio/asyncio_motor_collection.html">AsyncIO Motor Collection</a></li>
-</ul>
+<p>In case, when you need more low-level control, you can get access to the engine of the Beanie <code>Document</code>- <a href="https://motor.readthedocs.io/en/stable/api-asyncio/asyncio_motor_collection.html">AsyncIO Motor Collection</a></p>
 <pre><code class="language-python">motor_collection = DocumentTestModel.get_motor_collection()
 await motor_collection.drop_index(&quot;index_name&quot;)
 </code></pre>
@@ -460,5 +457,5 @@ await motor_collection.drop_index(&quot;index_name&quot;)
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-03-21 20:16:18.365743+00:00
+Build Date UTC : 2021-03-25 09:33:22.484117+00:00
 -->
