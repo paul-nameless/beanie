@@ -381,7 +381,17 @@ have the same name as the document class.</p>
         name = &quot;custom_collection&quot;
 </code></pre>
 <h4 id="indexes">Indexes</h4>
-<p>The indexes could be set up by the <code>indexes</code> field. It is a list where items could be:</p>
+<h5 id="simple-indexes">Simple indexes</h5>
+<p>To setup an index over a single field the <code>Indexed</code> function can be used to wrap the type:</p>
+<pre><code class="language-python">from beanie import Indexed
+
+class DocumentTestModelWithIndex(Document):
+    test_int: Indexed(int)
+    test_list: List[SubDocument]
+    test_str: str
+</code></pre>
+<h5 id="complex-indexes">Complex indexes</h5>
+<p>More complex indexes can be set up by the <code>indexes</code> field in a Collection class. It is a list where items could be:</p>
 <ul>
 <li>single key. Name of the document's field</li>
 <li>list of (key, direction) pairs. Key - string, name of the document's field. Direction - pymongo direction (
@@ -407,6 +417,7 @@ have the same name as the document class.</p>
             ),
         ]
 </code></pre>
+<p>Complex and simple indices can be used in tandem.</p>
 <h3 id="use-motor-collection">Use Motor Collection</h3>
 <p>In case, when you need more low-level control, you can get access to the engine of the Beanie <code>Document</code>- <a href="https://motor.readthedocs.io/en/stable/api-asyncio/asyncio_motor_collection.html">AsyncIO Motor Collection</a></p>
 <pre><code class="language-python">motor_collection = DocumentTestModel.get_motor_collection()
@@ -465,5 +476,5 @@ await motor_collection.drop_index(&quot;index_name&quot;)
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-03-25 15:36:15.202602+00:00
+Build Date UTC : 2021-04-09 13:22:47.687227+00:00
 -->
