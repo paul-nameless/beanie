@@ -381,7 +381,7 @@ have the same name as the document class.</p>
         name = &quot;custom_collection&quot;
 </code></pre>
 <h4 id="indexes">Indexes</h4>
-<h5 id="simple-indexes">Simple indexes</h5>
+<h5 id="single-field-indexes">Single field indexes</h5>
 <p>To setup an index over a single field the <code>Indexed</code> function can be used to wrap the type:</p>
 <pre><code class="language-python">from beanie import Indexed
 
@@ -390,10 +390,13 @@ class DocumentTestModelWithIndex(Document):
     test_list: List[SubDocument]
     test_str: str
 </code></pre>
+<p>The <code>Indexed</code> function takes an optional argument <code>index_type</code>, which may be set to a pymongo index type:</p>
+<pre><code class="language-python">test_str: Indexed(str, index_type = pymongo.TEXT)
+</code></pre>
 <h5 id="complex-indexes">Complex indexes</h5>
 <p>More complex indexes can be set up by the <code>indexes</code> field in a Collection class. It is a list where items could be:</p>
 <ul>
-<li>single key. Name of the document's field</li>
+<li>single key. Name of the document's field (this is equivalent to using the Indexed function described above)</li>
 <li>list of (key, direction) pairs. Key - string, name of the document's field. Direction - pymongo direction (
   example: <code>pymongo.ASCENDING</code>)</li>
 <li><code>pymongo.IndexModel</code> instance - the most flexible
@@ -476,5 +479,5 @@ await motor_collection.drop_index(&quot;index_name&quot;)
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-09 13:28:51.985459+00:00
+Build Date UTC : 2021-04-09 18:42:36.009090+00:00
 -->
